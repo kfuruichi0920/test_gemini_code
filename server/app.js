@@ -5,6 +5,8 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 const DATA_FILE = path.join(__dirname, 'tasks.json');
 
+const cors = require('cors');
+app.use(cors());
 app.use(express.json());
 
 // タスク一覧取得
@@ -23,11 +25,14 @@ app.get('/api/tasks/:id', (req, res) => {
 
 // タスク新規作成
 app.post('/api/tasks', (req, res) => {
+  console.log('POST /api/tasks body:', req.body);
   const tasks = JSON.parse(fs.readFileSync(DATA_FILE, 'utf-8'));
   const newTask = { ...req.body, id: Date.now().toString() };
   tasks.push(newTask);
   fs.writeFileSync(DATA_FILE, JSON.stringify(tasks, null, 2));
+  console.log('tasks after add:', tasks);
   res.status(201).json(newTask);
+  console.log('response:', newTask);
 });
 
 // タスク編集
