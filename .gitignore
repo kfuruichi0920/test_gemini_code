@@ -1,0 +1,38 @@
+# Node
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Logs
+logs/
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# VSCode
+.vscode/
+
+# Env
+.env
+.env.*
+
+# Build
+/dist/
+/build/
+
+# Coverage
+coverage/
+
+# Others
+*.local
+*.sublime-workspace
+*.sublime-project
+
+# Ignore by convention
+.idea/
+*.iml
+
+# GitHub
+.github/*.prompts.md
